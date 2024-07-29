@@ -13,7 +13,7 @@ const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
 const wallWidth = 20;
 const wallHeight = 100;
-const initialBallSpeed = 4.5;
+const initialBallSpeed = 4.5; // Ball speed remains constant
 
 let paddleX = (canvas.width - paddleWidth) / 2;
 let balls = [];
@@ -184,9 +184,7 @@ function startGame(selectedLevel) {
 }
 
 function restartGame() {
-    resetGame();
     document.getElementById('game-over').style.display = 'none';
-    document.getElementById('level-selection').style.display = 'none';
     document.getElementById('start-screen').style.display = 'flex';
 }
 
@@ -204,7 +202,6 @@ function resetGame() {
     staticBlocks = [];
     document.getElementById('score').innerText = 'Score: ' + score;
     drawLives();
-    drawScore();
     setupBricks();
     if (level === 2) {
         setupLevelTwo();
