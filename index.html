@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakout Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="start-screen">
+        <h1>Breakout Game</h1>
+        <button id="start-button">Start Game</button>
+    </div>
+
+    <div id="level-selection">
+        <h2>Select Level</h2>
+        <button id="level-1-button">Level 1</button>
+        <button id="level-2-button">Level 2</button>
+    </div>
+
+    <div id="gameCanvasContainer">
+        <canvas id="gameCanvas" width="480" height="320"></canvas>
+        <div id="score">Score: 0</div>
+        <div id="lives"></div>
+    </div>
+
+    <div id="game-over">
+        <h2>Game Over</h2>
+        <button id="restart-button">Restart</button>
+    </div>
+
+    <div id="level-up-screen">
+        <h2>Good Job! Level Complete</h2>
+        <button id="next-level-button">Next Level</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
