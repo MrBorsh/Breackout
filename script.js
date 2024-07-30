@@ -148,7 +148,7 @@ function drawStaticBlocks() {
     staticBlocks.forEach(block => {
         ctx.beginPath();
         ctx.rect(block.x, block.y, block.width, block.height);
-        ctx.fillStyle = '#DD9500';
+        ctx.fillStyle = '#FFD700'; // Change color to distinguish static blocks
         ctx.fill();
         ctx.closePath();
     });
@@ -264,8 +264,14 @@ function draw() {
     });
 
     collisionDetection();
+
+    if (rightPressed && paddleX < canvas.width - paddleWidth) {
+        paddleX += 7;
+    } else if (leftPressed && paddleX > 0) {
+        paddleX -= 7;
+    }
+
     requestAnimationFrame(draw);
 }
 
-// Initialize game
 document.getElementById('start-screen').style.display = 'flex';
