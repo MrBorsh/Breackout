@@ -9,9 +9,7 @@ let leftPressed = false;
 let score = 0;
 let lives = 3;
 let level = 1;
-let balls = [];
-const initialBallSpeed = 2;
-
+let balls = [{ x: canvas.width / 2, y: canvas.height - 30, dx: 2, dy: -2, color: '#0095DD' }];
 const bricks = [];
 const brickRowCount = 5;
 const brickColumnCount = 3;
@@ -20,11 +18,6 @@ const brickHeight = 20;
 const brickPadding = 10;
 const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
-
-const barriers = [
-    { x: 200, y: 150, width: 50, height: 10 },
-    { x: 400, y: 200, width: 50, height: 10 },
-];
 
 document.addEventListener('keydown', keyDownHandler, false);
 document.addEventListener('keyup', keyUpHandler, false);
@@ -79,16 +72,6 @@ function drawBricks() {
     }
 }
 
-function drawBarriers() {
-    barriers.forEach(barrier => {
-        ctx.beginPath();
-        ctx.rect(barrier.x, barrier.y, barrier.width, barrier.height);
-        ctx.fillStyle = '#FF5733';
-        ctx.fill();
-        ctx.closePath();
-    });
-}
-
 function drawLives() {
     for (let i = 0; i < lives; i++) {
         ctx.beginPath();
@@ -102,12 +85,16 @@ function drawLives() {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
-    drawBarriers();
     drawPaddle();
     drawLives();
     balls.forEach(ball => drawBall(ball));
     drawScore();
     moveBalls();
+}
+
+function drawScore() {
+    document.getElementById('score').textContent = `Score: ${score}`;
+    document.getElementById('lives').textContent = `Lives: ${lives}`;
 }
 
 function moveBalls() {
@@ -174,8 +161,8 @@ function collisionDetection() {
 function resetBall(ball) {
     ball.x = canvas.width / 2;
     ball.y = canvas.height - 30;
-    ball.dx = initialBallSpeed;
-    ball.dy = -initialBallSpeed;
+    ball.dx = 2;
+    ball.dy = -2;
 }
 
 function resetBricks() {
@@ -188,7 +175,7 @@ function resetBricks() {
 }
 
 function initGame() {
-    balls = [{ x: canvas.width / 2, y: canvas.height - 30, dx: initialBallSpeed, dy: -initialBallSpeed, color: '#0095DD' }];
+    balls = [{ x: canvas.width / 2, y: canvas.height - 30, dx: 2, dy: -2, color: '#0095DD' }];
     resetBricks();
     score = 0;
     lives = 3;
@@ -201,8 +188,8 @@ function initGame() {
 
 function startLevel(levelNum) {
     if (levelNum === 2) {
-        barriers.push({ x: 150, y: 300, width: 50, height: 10 }, { x: 450, y: 300, width: 50, height: 10 });
-        balls.push({ x: canvas.width / 2, y: canvas.height - 30, dx: initialBallSpeed, dy: -initialBallSpeed, color: '#0095DD' });
+        balls.push({ x: canvas.width / 2, y: canvas.height - 30, dx: 2, dy: -2, color: '#0095DD' });
+        // Add barriers here
     }
     document.getElementById('gameCanvas').style.display = 'block';
     document.getElementById('level-selection').style.display = 'none';
