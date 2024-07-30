@@ -13,7 +13,7 @@ const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
 const wallWidth = 20;
 const wallHeight = 100;
-const initialBallSpeed = 4.5; // Ball speed remains constant
+const initialBallSpeed = 4.5;
 
 let paddleX = (canvas.width - paddleWidth) / 2;
 let balls = [];
@@ -255,7 +255,7 @@ function draw() {
                     document.getElementById('gameCanvas').style.display = 'none';
                     return;
                 } else {
-                    resetGame();
+                    resetBall(ball);
                 }
             }
         }
@@ -272,6 +272,13 @@ function draw() {
     }
 
     requestAnimationFrame(draw);
+}
+
+function resetBall(ball) {
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height - 30;
+    ball.dx = initialBallSpeed;
+    ball.dy = -initialBallSpeed;
 }
 
 document.getElementById('start-screen').style.display = 'flex';
