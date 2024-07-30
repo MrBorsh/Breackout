@@ -7,11 +7,14 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
+    position: relative;
 }
 
 #gameCanvas {
     border: 1px solid #000;
     display: none;
+    width: 800px;
+    height: 600px;
 }
 
 .screen {
@@ -19,7 +22,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
     height: 100%;
+}
+
+#start-screen, #level-selection {
+    left: 20px;
+    top: 20px;
+    width: 200px;
 }
 
 .screen p {
@@ -36,6 +46,7 @@ body {
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+    margin-bottom: 10px;
 }
 
 .button:hover {
@@ -45,7 +56,7 @@ body {
 #game-info {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 250px;
     display: flex;
     gap: 20px;
 }
@@ -54,9 +65,4 @@ body {
 #lives {
     font-size: 16px;
     color: #333;
-}
-
-canvas {
-    display: inline-block;
-    margin: 0 5px;
 }
